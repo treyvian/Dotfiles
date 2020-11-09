@@ -1,0 +1,68 @@
+[module/i3]
+type = internal/i3
+
+index-sort = true
+
+enable-click = true
+enable-scroll = false
+
+wrapping-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+pin-workspaces = true
+strip-wsnumbers = true
+
+; ws-icon-[0-9]+ = <label>;<icon>
+; NOTE: The <label> needs to match the name of the i3 workspace
+; Neither <label> nor <icon> can contain a semicolon (;)
+ws-icon-0 = 1;❶
+ws-icon-1 = term;
+ws-icon-2 = browser;
+ws-icon-3 = file;
+ws-icon-4 = extra;
+ws-icon-5 = extra;
+ws-icon-6 = browser;
+ws-icon-7 = music;
+ws-icon-8 = msg;
+ws-icon-9 = mail;
+ws-icon-default = 
+; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
+; you must also define a ws-icon-5.
+; NOTE: Icon will be available as the %icon% token inside label-*
+
+
+; Available tags:
+;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
+;   <label-mode> (default)
+format = <label-state> <label-mode>
+
+
+label-mode = %mode%
+label-mode-foreground = ${color.foreground}
+label-mode-background = ${color.background}
+
+
+label-focused = %index%
+label-focused-foreground = #ffffff
+
+label-focused-background = ${color.foreground}
+label-focused-underline= ${color.foreground}
+
+label-focused-padding = 2
+
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+label-unfocused-background = ${color.background}
+label-unfocused-foreground = ${color.foreground}
+
+
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+
+label-urgent = %index%
+label-urgent-background = ${color.red}
+label-urgent-padding = 2
