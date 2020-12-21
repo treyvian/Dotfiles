@@ -8,7 +8,7 @@ conky.config = {
     own_window = true,
     own_window_transparent = true,
     own_window_type = 'override',
-    own_window_class = 'Conky',
+    own_window_class = 'conky',
     own_window_argb_visual = true,
     own_window_argb_value = 255,
     own_window_colour = '#000',
@@ -24,7 +24,7 @@ conky.config = {
     default_shade_color = '#BEC8CB',
     default_outline_color = '#BEC8CB',
     alignment = 'top_left',
-    gap_x = 700,
+    gap_x = 975,
     gap_y = 100,
     no_buffers = true,
     cpu_avg_samples = 2,
@@ -57,8 +57,8 @@ ${alignr}${offset -75}< ${exec sensors | grep "RPM" | cut -c14-25} > Fan Speed �
 ${alignr}${offset -75}│
 ${alignr}${offset -75}│
 ${alignr}${offset -75}┌────── Temperatures ───────────────┤
-${alignr}${offset -165}├─ Core0 < ${execi 5 sensors|grep 'Core 0'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C >${alignr}${offset -75}│
-${alignr}${offset -165}└─ Core1 < ${execi 5 sensors|grep 'Core 1'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C >${alignr}${offset -75}│
+${alignr}${offset -165}├─ Core < ${execi 5 sensors|grep 'Tctl'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C >${alignr}${offset -75}│
+${alignr}${offset -165}└─ Die < ${execi 5 sensors|grep 'Tdie'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C >${alignr}${offset -75}│
 ${alignr}${offset -75}│
 ${alignr}${offset -75}│
 ${alignr}${offset -75}┌───── < ${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'|uniq|cut -c 1-36|sed 's/(R)//g'|sed 's/(TM)//g'|sed 's/CPU     //g'} > ──────────┤
