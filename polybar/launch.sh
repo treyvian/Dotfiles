@@ -9,5 +9,13 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch primary and secondary bars
-polybar -c ~/.config/polybar/config-primary.ini primary &
+if type "xrandr"; then
+  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    MONITOR=$m polybar -c ~/.config/polybar/config-primary.ini center &
+  done
+else
+  polybar -c ~/.config/polybar/config-primary.ini center &
+fi
+
+polybar -c ~/.config/polybar/config-primary.ini center
 
